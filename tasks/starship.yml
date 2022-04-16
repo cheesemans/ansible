@@ -1,22 +1,21 @@
 - name: Create ~/.fonts if it does not exist
   file:
-    path: /usr/local/share/fonts
+    path: /usr/local/share/fonts/FiraCode
     state: directory
 
 - name: Check if FiraCode is already installed
-  stat:
-    path: "/usr/local/share/fonts/Fira Code Bold Nerd Font Complete.ttf"
-  register: result                  
-                                    
-                                    
+  find:
+    paths: /usr/local/share/fonts/FiraCode
+  register: filesFound
+
 - name: Download and unpack FiraCode font
-  debug:                            
+  debug:
     msg: "FiraCode does not exist!"
-  when: not result.stat.exists
+  when: filesFound.matched > 0
 
 #- name: Download and unpack FiraCode font
 #  unarchive:
 #    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-#    dest: ~/.fonts/
+#    dest: /usr/local/share/fonts/FiraCode
 #    remote_src: yes
 #  when: result.stat.exists
