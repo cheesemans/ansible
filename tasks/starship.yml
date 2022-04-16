@@ -5,12 +5,12 @@
 
 - name: Check if FiraCode is already installed
   stat:
-    path: "/usr/local/share/fonts/FiraCode*"
-  register: result
-
-
+    path: "/usr/local/share/fonts/Fira Code Bold Nerd Font Complete.ttf"
+  register: result                  
+                                    
+                                    
 - name: Download and unpack FiraCode font
-  debug:
+  debug:                            
     msg: "FiraCode does not exist!"
   when: not result.stat.exists
 
