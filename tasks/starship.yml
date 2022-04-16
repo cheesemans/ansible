@@ -1,4 +1,4 @@
-- name: Create ~/.fonts if it does not exist
+- name: Create folder for FiraCode font if it does not exist
   file:
     path: /usr/local/share/fonts/FiraCode
     state: directory
@@ -9,13 +9,12 @@
   register: filesFound
 
 - name: Download and unpack FiraCode font
-  debug:
-    msg: "FiraCode does not exist!"
+  unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+    dest: /usr/local/share/fonts/FiraCode
+    remote_src: yes
   when: not filesFound.matched > 0
 
-#- name: Download and unpack FiraCode font
-#  unarchive:
-#    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-#    dest: /usr/local/share/fonts/FiraCode
-#    remote_src: yes
-#  when: result.stat.exists
+- name: Rebuild font information cache files
+  shell: fc-cache -fv
+  when: not filesFound.matched > 0
