@@ -26,3 +26,7 @@
 # Move this to another taskbook as it doesn't fit here!
 - name: Remap caps to escape
   shell: setxkbmap -option caps:escape 
+
+- name: Test debug
+  debug:
+    msg: "{{ user }}/.zshrc"
