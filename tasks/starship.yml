@@ -10,7 +10,8 @@
 
 
 - name: Download and unpack FiraCode font
-  msg: "FiraCode does not exist!"
+  debug:
+    msg: "FiraCode does not exist!"
   when: not result.stat.exists
 
 #- name: Download and unpack FiraCode font
