@@ -11,7 +11,7 @@
 - name: Download and unpack FiraCode font
   debug:
     msg: "FiraCode does not exist!"
-  when: filesFound.matched = 0
+  when: not filesFound.matched > 0
 
 #- name: Download and unpack FiraCode font
 #  unarchive:
