@@ -1,5 +1,4 @@
 - name: Download and unpack FiraCode font
-  when: hack_exists is failed
   unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
     dest: ~/.fonts/
