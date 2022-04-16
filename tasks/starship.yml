@@ -1,5 +1,16 @@
+- name: Create ~/.fonts if it does not exist
+    file:
+      path: ~/.fonts
+      state: directory
+
+- name: Check if FiraCode is already installed
+    stat:
+      path: "~/.fonts/FiraCode*"
+    register: result
+
 - name: Download and unpack FiraCode font
-  unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-    dest: ~/.fonts/
-    remote_src: yes
+    unarchive:
+      src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
+      dest: ~/.fonts/
+      remote_src: yes
+    when: results.stat.exists
