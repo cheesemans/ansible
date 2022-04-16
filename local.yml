@@ -2,7 +2,7 @@
   become: true
   pre-tasks:
     - name: update repositories
-      apt: update_cache: yes
+      apt: update_cache=:yes
       changed_when: False
 
   tasks:
