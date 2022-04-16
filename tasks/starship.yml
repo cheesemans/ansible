@@ -1,6 +1,6 @@
 - name: Create ~/.fonts if it does not exist
   file:
-    path: ~/.fonts
+    path: "{{ lookup('env', 'HOME') }}/.fonts"
     state: directory
 
 - name: Check if FiraCode is already installed
