@@ -13,4 +13,4 @@
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
     dest: ~/.fonts/
     remote_src: yes
-  when: results.stat.exists
+  when: result.stat.exists
