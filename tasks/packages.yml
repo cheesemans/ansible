@@ -1,6 +1,13 @@
- - name: Install packages
-   apt: name={{item}}
-   with_items:
-     - git      
-     - vim
-     - hstr
+- name: Add apt-repositories
+  apt-repository: 
+    repo: ppa:ultradvorka/ppa
+    state: present
+    update_cache: yes
+ 
+- name: Install packages
+  apt: 
+    name: {{item}}
+    with_items:
+      - git      
+      - vim
+      - hstr
