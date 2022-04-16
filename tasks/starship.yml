@@ -1,17 +1,17 @@
 - name: Create folder for FiraCode font if it does not exist
   file:
-    path: /usr/local/share/fonts/FiraCode
+    path: /usr/local/share/fonts/CascadiaCode
     state: directory
 
 - name: Check if FiraCode is already installed
   find:
-    paths: /usr/local/share/fonts/FiraCode
+    paths: /usr/local/share/fonts/CascadiaCode
   register: filesFound
 
 - name: Download and unpack FiraCode font
   unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraCode.zip
-    dest: /usr/local/share/fonts/FiraCode
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip
+    dest: /usr/local/share/fonts/CascadiaCode
     remote_src: yes
   when: not filesFound.matched > 0
 
