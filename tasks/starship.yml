@@ -18,3 +18,10 @@
 - name: Rebuild font information cache files
   shell: fc-cache -fv
   when: not filesFound.matched > 0
+
+- name: Install starship binary
+  shell: curl -sS https://starship.rs/install.sh | sh
+
+# Move this to another taskbook as it doesn't fit here!
+- name: Remap caps to escape
+  shell: setxkbmap -option caps:escape 
