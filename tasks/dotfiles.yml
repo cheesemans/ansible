@@ -1,0 +1,4 @@
+- name: "Check out dotfiles from repository"
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "/home/{{ user }}/dotfiles"

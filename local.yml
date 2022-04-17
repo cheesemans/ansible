@@ -1,10 +1,20 @@
 - hosts: localhost
   become: true
+  vars:
+    - dotfiles_repo: "git@github.com:cheesemans/dotfiles.git"
+    - ssh_key: ".ssh/id_github"
+
   pre_tasks:
-    - name: update repositories
+    - name: Add apt-repositories
+      apt_repository:
+        repo: ppa:ultradvorka/ppa
+        state: present
+      changed_when: False
+    - name: Update repositories
       apt: update_cache=yes
       changed_when: False
 
   tasks:
     - include: tasks/packages.yml
     - include: tasks/starship.yml
+    - include: tasks/dotfiles.yml
