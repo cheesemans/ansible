@@ -21,7 +21,7 @@
     group: "{{ user }}"
     state: link
   with_items: "{{ check_dotfile.results }}"
-  when: item.stat.exists
+  when: not item.stat.exists
 
 - name: Load dotfile in existing file
   blockinfile:
@@ -32,5 +32,5 @@
       fi 
   with_items: "{{ check_dotfile.results }}"
   when: 
-    - not item.stat.exists 
+    - item.stat.exists 
     - item.item.is_bash
