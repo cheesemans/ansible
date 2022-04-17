@@ -31,4 +31,6 @@
         source ~/{{ item.item.src }}
       fi 
   with_items: "{{ check_dotfile.results }}"
-  when: not item.stat.exists
+  when: 
+    - not item.stat.exists 
+    - item.item.is_bash
