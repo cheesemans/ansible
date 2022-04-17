@@ -1,4 +1,4 @@
-- name: "Check out dotfiles from repository"
+- name: Check out dotfiles from repository
   git:
     repo: "{{ dotfiles_repo }}"
     dest: "/home/{{ user }}/dotfiles"
@@ -27,7 +27,7 @@
   blockinfile:
     path: "/home/{{ user }}/{{ item.item.dest }}"
     block: |
-      if [ -f /home/{{ user }}/{{ item.item.dest }} ]; then
+      if [ -f /home/{{ user }}/{{ item.item.src }} ]; then
         source ~/{{ item.item.src }}
       fi 
   with_items: "{{ check_dotfile.results }}"
