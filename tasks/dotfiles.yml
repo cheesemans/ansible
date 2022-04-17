@@ -2,4 +2,4 @@
   git:
     repo: "{{ dotfiles_repo }}"
     dest: "/home/{{ user }}/dotfiles"
-    key: "/home/{{ user }}/{{ ssh_file }}
+    key: "/home/{{ user }}/{{ ssh_file }}"
