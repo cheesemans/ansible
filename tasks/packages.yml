@@ -13,7 +13,7 @@
   snap:
     name: starship
 
--name: Install gem packages
+- name: Install gem packages
   gem:
     name: colorls
 
