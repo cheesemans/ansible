@@ -9,12 +9,12 @@
 
 - name: Checking if dotfiles exist
   stat:
-    path: "./home/{{ user }}/{{ item.src }}"
+    path: "./home/{{ user }}/{{ item.dest }}"
   with_items: "{{ dotfiles }}"
   register: check_dotfile
 
 - name: Create symbolic links to dotfiles file doesn't exist
-  ansible.builtin.file:
+  file:
     src: "/home/{{ user }}/{{ item.item.src }}"
     dest: "/home/{{ user }}/{{ item.item.dest }}"
     owner: "{{ user }}"
