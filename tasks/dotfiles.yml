@@ -29,8 +29,9 @@
     block: |
       if [ -f /home/{{ user }}/{{ item.item.src }} ]; then
         source ~/{{ item.item.src }}
-      fi 
+      fi
   with_items: "{{ check_dotfile.results }}"
-  when: 
-    - item.stat.exists 
+  when:
+    - item.stat.exists
+    - not item.stat.islnk
     - item.item.is_bash
