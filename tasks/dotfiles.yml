@@ -17,11 +17,11 @@
   file:
     src: "/home/{{ user }}/{{ item.item.src }}"
     dest: "/home/{{ user }}/{{ item.item.dest }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
     state: link
   with_items: "{{ check_dotfile.results }}"
   when: not item.stat.exists
+  become: yes
+  become_user: "{{ user }}"
 
 - name: Load dotfile in existing file
   blockinfile:
@@ -36,7 +36,7 @@
     - not item.stat.islnk
     - item.item.is_bash
 
-- name: Check Vundle repo
+- name: Checkout Vundle repo
   git:
     repo: "https://github.com/VundleVim/Vundle.vim.git"
     dest: "/home/{{ user }}//.vim/bundle/Vundle.vim"
