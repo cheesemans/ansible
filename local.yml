@@ -16,5 +16,5 @@
   tasks:
     - include: tasks/packages.yml
     - include: tasks/fonts.yml
-    - include: tasks/dotfiles.yml
     - include: tasks/zsh.yml
+    - include: tasks/dotfiles.yml
