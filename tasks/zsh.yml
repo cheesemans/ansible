@@ -5,6 +5,7 @@
   shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   become: yes
   become_user: "{{ user }}"
+  ignore_errors: yes
 
 - name: Download zsh-autosuggestions
   git:
