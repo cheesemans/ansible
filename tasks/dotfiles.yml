@@ -4,3 +4,15 @@
     dest: "/home/{{ user }}/dotfiles"
     accept_hostkey: yes
     key_file: "/home/{{ user }}/{{ ssh_key }}"
+  become: yes
+  become_user: {{ user }}
+
+- name: Create a symbolic link
+  ansible.builtin.file:
+    src: "/home/{{ user }}/dotfiles/{{ item.src }}"
+    dest: "/home/{{ user }}/{{ item.dest }}"
+    owner: {{ user }}
+    group: {{ user }}
+    state: link
+  loop:
+    - { src: .xinitrc, dest: .xinitrc }
