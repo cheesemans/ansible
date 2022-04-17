@@ -7,8 +7,13 @@
     - bash-completion
     - zsh
     - curl
+    - ruby-full
 
 - name: Install snap packages
   snap:
     name: starship
+
+-name: Install gem packages
+  gem:
+    name: colorls
 
