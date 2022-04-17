@@ -1,0 +1,2 @@
+dotfiles:
+  - { src: dotfiles/.xinitrc, dest: .xinitrc }

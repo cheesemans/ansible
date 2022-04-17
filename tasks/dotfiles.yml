@@ -7,12 +7,28 @@
   become: yes
   become_user: "{{ user }}"
 
-- name: Create a symbolic link
+- name: Checking if dotfiles exist
+  stat:
+    path: "./home/{{ user }}/{{ item.src }}"
+  with_items: "{{ dotfiles }}"
+  register: check_dotfile
+
+- name: Create symbolic links to dotfiles file doesn't exist
   ansible.builtin.file:
-    src: "/home/{{ user }}/dotfiles/{{ item.src }}"
-    dest: "/home/{{ user }}/{{ item.dest }}"
+    src: "/home/{{ user }}/{{ item.item.src }}"
+    dest: "/home/{{ user }}/{{ item.item.dest }}"
     owner: "{{ user }}"
     group: "{{ user }}"
     state: link
-  loop:
-    - { src: .xinitrc, dest: .xinitrc }
+  with_items: "{{ check_dotfile.results }}"
+  when: item.stat.exists
+
+- name: Load dotfile in existing file
+  blockinfile:
+    path: "/home/{{ user }}/{{ item.item.dest }}"
+    block: |
+      if [ -f /home/{{ user }}/{{ item.item.dest }} ]; then
+        source ~/{{ item.item.src }}
+      fi 
+  with_items: "{{ check_dotfile.results }}"
+  when: not item.stat.exists
