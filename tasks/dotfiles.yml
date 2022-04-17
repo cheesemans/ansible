@@ -9,7 +9,7 @@
 
 - name: Checking if dotfiles exist
   stat:
-    path: "./home/{{ user }}/{{ item.dest }}"
+    path: "/home/{{ user }}/{{ item.dest }}"
   with_items: "{{ dotfiles }}"
   register: check_dotfile
 
