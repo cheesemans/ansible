@@ -1,8 +1,5 @@
 - hosts: localhost
   become: true
-  vars:
-    - dotfiles_repo: "git@github.com:cheesemans/dotfiles.git"
-    - ssh_key: ".ssh/id_github"
   vars_files:
     - variables/dotfiles.yml
 

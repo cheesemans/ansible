@@ -1,9 +1,9 @@
 - name: Check out dotfiles from repository
   git:
-    repo: "{{ dotfiles_repo }}"
+    repo: "git@github.com:cheesemans/dotfiles.git"
     dest: "/home/{{ user }}/dotfiles"
     accept_hostkey: yes
-    key_file: "/home/{{ user }}/{{ ssh_key }}"
+    key_file: "/home/{{ user }}/.ssh/id_github"
   become: yes
   become_user: "{{ user }}"
 
@@ -35,3 +35,10 @@
     - item.stat.exists
     - not item.stat.islnk
     - item.item.is_bash
+
+- name: Check Vundle repo
+  git:
+    repo: "https://github.com/VundleVim/Vundle.vim.git"
+    dest: "/home/{{ user }}//.vim/bundle"
+  become: yes
+  become_user: "{{ user }}"
