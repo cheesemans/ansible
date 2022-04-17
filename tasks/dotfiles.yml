@@ -2,4 +2,5 @@
   git:
     repo: "{{ dotfiles_repo }}"
     dest: "/home/{{ user }}/dotfiles"
+    accept_hostkey: yes
     key_file: "/home/{{ user }}/{{ ssh_key }}"
