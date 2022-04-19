@@ -7,11 +7,11 @@
     - bash-completion
     - zsh
     - curl
+    - docker.io
 
 - name: Install snap packages
   snap: name={{item}}
   with_items:
     - starship
-    - docker
 
 
