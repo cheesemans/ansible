@@ -9,6 +9,9 @@
     - curl
 
 - name: Install snap packages
-  snap:
-    name: starship
+  snap: name={{item}}
+  with_items:
+    - starship
+    - docker
+
 
