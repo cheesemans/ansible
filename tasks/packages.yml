@@ -2,7 +2,7 @@
   apt: name={{item}}
   with_items:
     - git
-    - vim
+    - vim-gtk3
     - hstr
     - bash-completion
     - zsh
