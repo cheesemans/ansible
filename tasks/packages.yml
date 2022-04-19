@@ -8,6 +8,9 @@
     - zsh
     - curl
     - docker.io
+    - python3
+    - python3-pip
+    - python-is-python3
 
 - name: Install snap packages
   snap: name={{item}}
