@@ -8,7 +8,7 @@
 ## How to run
 
 ### Set up personal computer
-´./setup.sh personal´
+    ./setup.sh personal
 
 ### Set up work computer
-´./setup.sh work´
+    ./setup.sh work
