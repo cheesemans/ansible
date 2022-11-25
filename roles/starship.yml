@@ -30,3 +30,4 @@
 
 - name: Rebuild font information cache files
   ansible.builtin.shell: fc-cache -fv
+  when: not FontInstalled.matched > 0
