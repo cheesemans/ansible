@@ -5,6 +5,19 @@
     user: "{{ lookup('ansible.builtin.env', 'USER') }}"
     oh_my_zsh_path: "{{ lookup('ansible.builtin.env', 'ZSH') }}"
 
+  pre_tasks:
+    - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
+      apt_repository:
+        repo: ppa:ultradvorka/ppa
+        state: present
+      become: yes
+      changed_when: false
+    - name: Update apt repositories
+      apt:
+        update_cache: yes
+      become: yes
+      changed_when: false
+
   tasks:
     - include: roles/base.yml
     - include: roles/git.yml
