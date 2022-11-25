@@ -1,5 +1,14 @@
 - hosts: all
+  become: no
+  vars: 
+    user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+    user: "{{ lookup('ansible.builtin.env', 'USER') }}"
 
   tasks:
-    - include: tasks/base.yml
-    - include: tasks/git.yml
+    - name: User
+      ansible.builtin.debug:
+        msg: "{{ user_home }}"
+    - include: roles/base.yml
+    - include: roles/git.yml
+    - include: roles/starship.yml
+    - include: roles/zsh.yml

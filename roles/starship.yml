@@ -1,0 +1,33 @@
+- name: Install snap packages
+  ansible.builtin.snap: 
+    name:
+      - starship
+  become: yes
+
+- name: Copy starship config file
+  ansible.builtin.copy:
+    src: starship.toml
+    dest: "{{ user_home }}/startship.toml"
+
+- name: Create folder for FiraCode font if it does not exist
+  ansible.builtin.file:
+    path: /usr/local/share/fonts/CascadiaCode
+    state: directory
+  become: yes
+
+- name: Check if FiraCode is already installed
+  ansible.builtin.find:
+    paths: /usr/local/share/fonts/CascadiaCode
+  register: FontInstalled
+
+- name: Download and unpack FiraCode font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/CascadiaCode.zip
+    dest: /usr/local/share/fonts/CascadiaCode
+    remote_src: yes
+  become: yes
+  when: not FontInstalled.matched > 0
+
+- name: Rebuild font information cache files
+  ansible.builtin.shell: fc-cache -fv
+  when: not FontInstalled.matched > 0

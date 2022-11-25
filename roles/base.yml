@@ -1,7 +1,9 @@
 - name: Install some basic apt packages
   ansible.builtin.apt: 
     name:
-      - vim
+      - bash-completion
+      - curl
+      - hstr
       - python3
       - python3-pip
       - python-is-python3

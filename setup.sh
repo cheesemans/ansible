@@ -10,4 +10,4 @@ then
     exit 1
 fi
 
-ansible-playbook -i inventory.yml -l "$1" setup.yml
+ansible-playbook -i inventory.yml -l "$1" setup.yml --ask-become-pass
