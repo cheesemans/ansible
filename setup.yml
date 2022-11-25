@@ -10,3 +10,4 @@
     - include: roles/git.yml
     - include: roles/starship.yml
     - include: roles/zsh.yml
+    - include: roles/vim.yml

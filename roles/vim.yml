@@ -6,11 +6,9 @@
 - name: Checkout Vundle repo
   ansible.builtin.git:
     repo: "https://github.com/VundleVim/Vundle.vim.git"
-    dest: "/home/{{ user }}//.vim/bundle/Vundle.vim"
-  become: yes
-  become_user: "{{ user }}"
+    dest: "{{ user_home }}//.vim/bundle/Vundle.vim"
 
 - name: Copy vimrc to correct path
   ansible.builtin.copy:
     src: .vimrc
-    dest: .vimrc
+    dest: "{{ user_home }}/.vimrc"
