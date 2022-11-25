@@ -17,3 +17,7 @@
 * Start GNOME Tweaks, navigate to "Keyboard & Mouse"
     * Press "Additional Layout Options"
         * Alter Caps Lock Behaviour to "Make Caps Lock an additional Esc"
+
+## Update terminal configuration
+In order for starship to render nicely, the font and color scheme needs to be updated in the terminal preferences.
+Don't forget this step!

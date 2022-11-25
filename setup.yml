@@ -5,9 +5,6 @@
     user: "{{ lookup('ansible.builtin.env', 'USER') }}"
 
   tasks:
-    - name: User
-      ansible.builtin.debug:
-        msg: "{{ user_home }}"
     - include: roles/base.yml
     - include: roles/git.yml
     - include: roles/starship.yml

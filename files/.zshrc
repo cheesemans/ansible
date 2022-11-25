@@ -1,5 +1,8 @@
 # Oh-my-zsh configuration
 
+# Path to oh-my-zsh installation
+export ZSH="$HOME/.oh-my-zsh"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -7,7 +10,7 @@
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git z zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 ### User configuration ###
 
