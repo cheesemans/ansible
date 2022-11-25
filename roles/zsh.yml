@@ -12,7 +12,7 @@
 
 - name: Install oh-my-zsh
   ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  ignore_errors: yes
+  when: oh_my_zsh_path == ""
 
 - name: Download zsh-autosuggestions
   ansible.builtin.git:
