@@ -1,6 +1,7 @@
 # Ansible playbook to provision laptops
 
 ## To do
+* Automate docker installation
 * Automate vscode installation and configuration?
 
 ## How to run
@@ -26,4 +27,5 @@ terminal preferences.  Don't forget this step!
 
 ### Install vim plugins
 After launching vim, run:
+
     :PluginInstall
