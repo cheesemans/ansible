@@ -1,8 +1,7 @@
 # Ansible playbook to provision laptops
 
 ## To do
-* Roles instead of tasks to be more ansible-esque?
-* Integrate old tasks into new setup playbook
+* Automate vscode installation and configuration?
 
 ## How to run
 
@@ -12,12 +11,19 @@
 ### Set up work computer
     ./setup.sh work
 
-## Remap caps lock to esc
+## Manual steps
+Some steps are too tedious to automate, these have to be run manually 🥲, for now!
+
+### Remap caps lock to esc
 * Install GNOME Tweaks via Ubuntu Software Store.
 * Start GNOME Tweaks, navigate to "Keyboard & Mouse"
     * Press "Additional Layout Options"
         * Alter Caps Lock Behaviour to "Make Caps Lock an additional Esc"
 
-## Update terminal configuration
-In order for starship to render nicely, the font and color scheme needs to be updated in the terminal preferences.
-Don't forget this step!
+### Update terminal configuration
+In order for starship to render nicely, the font and color scheme needs to be updated in the
+terminal preferences.  Don't forget this step!
+
+### Install vim plugins
+After launching vim, run:
+    :PluginInstall
