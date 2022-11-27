@@ -16,7 +16,7 @@
     - name: Update apt repositories
       ansible.builtin.apt:
         update_cache: yes
-      become: yes
+      become: true
       changed_when: false
 
   tasks:
