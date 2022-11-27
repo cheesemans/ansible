@@ -6,12 +6,13 @@
     oh_my_zsh_path: "{{ lookup('ansible.builtin.env', 'ZSH') }}"
 
   pre_tasks:
-    - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
-      apt_repository:
-        repo: ppa:ultradvorka/ppa
-        state: present
-      become: yes
-      changed_when: false
+    # Adding ultradvorka/ppa seems to not be necessary on jammy, but maybe on focal and before?
+    #- name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
+    #  apt_repository:
+    #    repo: ppa:ultradvorka/ppa
+    #    state: present
+    #  become: yes
+    #  changed_when: false
     - name: Update apt repositories
       apt:
         update_cache: yes
@@ -24,3 +25,4 @@
     - include: roles/starship.yml
     - include: roles/zsh.yml
     - include: roles/vim.yml
+    - include: roles/docker.yml
