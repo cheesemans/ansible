@@ -20,10 +20,23 @@
       changed_when: false
 
   tasks:
-    - include_tasks: roles/base.yml
-    - include_tasks: roles/git.yml
-    - include_tasks: roles/starship.yml
-    - include_tasks: roles/zsh.yml
-    - include_tasks: roles/vim.yml
-    - include_tasks: roles/docker.yml
-    - include_tasks: roles/rust.yml
+    - name: Install some basic packages
+      ansible.builtin.include_tasks: roles/base.yml
+
+    - name: Install and setup git
+      ansible.builtin.include_tasks: roles/git.yml
+
+    - name: Install and setup starship
+      ansible.builtin.include_tasks: roles/starship.yml
+
+    - name: Install and setup zsh
+      ansible.builtin.include_tasks: roles/zsh.yml
+
+    - name: Install and setup vim
+      ansible.builtin.include_tasks: roles/vim.yml
+
+    - name: Install docker
+      ansible.builtin.include_tasks: roles/docker.yml
+
+    - name: Install rust
+      ansible.builtin.include_tasks: roles/rust.yml
