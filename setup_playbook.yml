@@ -11,11 +11,11 @@
     #   apt_repository:
     #     repo: ppa:ultradvorka/ppa
     #     state: present
-    #   become: yes
+    #   become: true
     #   changed_when: false
     - name: Update apt repositories
       ansible.builtin.apt:
-        update_cache: yes
+        update_cache: true
       become: true
       changed_when: false
 
