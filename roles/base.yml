@@ -1,5 +1,5 @@
 - name: Install some basic apt packages
-  ansible.builtin.apt: 
+  ansible.builtin.apt:
     name:
       - bash-completion
       - curl
@@ -7,4 +7,4 @@
       - python3
       - python3-pip
       - python-is-python3
-  become: yes
+  become: true

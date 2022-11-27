@@ -1,8 +1,8 @@
 - name: Install snap packages
-  ansible.builtin.snap: 
+  ansible.builtin.snap:
     name:
       - starship
-  become: yes
+  become: true
 
 - name: Copy starship config file
   ansible.builtin.copy:
@@ -13,7 +13,7 @@
   ansible.builtin.file:
     path: /usr/local/share/fonts/FiraCode
     state: directory
-  become: yes
+  become: true
 
 - name: Check if FiraCode is already installed
   ansible.builtin.find:
@@ -24,8 +24,8 @@
   ansible.builtin.unarchive:
     src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip
     dest: /usr/local/share/fonts/FiraCode
-    remote_src: yes
-  become: yes
+    remote_src: true
+  become: true
   when: not FontInstalled.matched > 0
 
 - name: Rebuild font information cache files

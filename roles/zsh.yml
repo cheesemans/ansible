@@ -1,17 +1,19 @@
+---
 - name: Install zsh
   ansible.builtin.apt:
     name:
       - zsh
-  become: yes
+  become: true
 
-- name: change user shell to zsh 
+- name: Change user shell to zsh
   ansible.builtin.user:
     name: "{{ user }}"
     shell: /usr/bin/zsh
-  become: yes
+  become: true
 
 - name: Install oh-my-zsh
-  ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ansible.builtin.shell: |
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: oh_my_zsh_path == ""
 
 - name: Download zsh-autosuggestions

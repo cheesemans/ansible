@@ -1,6 +1,0 @@
-dotfiles:
-  - { src: dotfiles/.xinitrc, dest: .xinitrc, is_bash: True }
-  - { src: dotfiles/.xinitrc, dest: .xsession, is_bash: True }
-  - { src: dotfiles/.zshrc, dest: .zshrc, is_bash: True }
-  - { src: dotfiles/.vimrc, dest: .vimrc, is_bash: True }
-  - { src: dotfiles/starship.toml, dest: .config/starship.toml, is_bash: False }
