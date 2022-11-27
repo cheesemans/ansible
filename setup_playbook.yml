@@ -26,3 +26,4 @@
     - include: roles/zsh.yml
     - include: roles/vim.yml
     - include: roles/docker.yml
+    - include: roles/rust.yml
