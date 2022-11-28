@@ -20,6 +20,7 @@
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions
     dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    version: a411ef3e0992d4839f0732ebeb9823024afaaaa8
 
 - name: Copy .zshrc to filesystem
   ansible.builtin.copy:
