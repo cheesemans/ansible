@@ -1,7 +1,6 @@
 # Ansible playbook to provision laptops
 
 ## To do
-* Automate docker installation
 * Automate vscode installation and configuration?
 
 ## How to run
@@ -10,6 +9,8 @@
     ./setup.sh personal
 
 ### Set up work computer
+Set work email in group_vars/work.yml.
+
     ./setup.sh work
 
 ## Manual steps
