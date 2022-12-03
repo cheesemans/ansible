@@ -11,7 +11,11 @@ jobs:
     uses: ./.github/workflows/super-linter.yml
     with:
       validate-all-code-base: true
+  ansible-lint:
+    uses: ./.github/workflows/ansible-lint.yml
   release_please:
-    needs: lint-code-base
+    needs: 
+      - lint-code-base
+      - ansible-lint
     uses: ./.github/workflows/release-please.yml
 

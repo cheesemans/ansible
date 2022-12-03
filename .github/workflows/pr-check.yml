@@ -7,7 +7,9 @@ on:
       - main
 
 jobs:
-  lint_code_base:
+  ansible-lint:
+    uses: ./.github/workflows/ansible-lint.yml
+  lint-code-base:
     uses: ./.github/workflows/super-linter.yml
     with:
       validate-all-code-base: true
