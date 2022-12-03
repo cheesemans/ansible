@@ -9,7 +9,7 @@ on:
 jobs:
   ansible-lint:
     uses: ./.github/workflows/ansible-lint.yml
-  lint-code-base:
+  super-linter:
     uses: ./.github/workflows/super-linter.yml
     with:
       validate-all-code-base: true

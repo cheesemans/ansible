@@ -7,14 +7,14 @@ on:
       - main
 
 jobs:
+  ansible-lint:
+    uses: ./.github/workflows/ansible-lint.yml
   lint-code-base:
     uses: ./.github/workflows/super-linter.yml
     with:
       validate-all-code-base: true
-  ansible-lint:
-    uses: ./.github/workflows/ansible-lint.yml
   release_please:
-    needs: 
+    needs:
       - lint-code-base
       - ansible-lint
     uses: ./.github/workflows/release-please.yml
