@@ -26,3 +26,4 @@
   ansible.builtin.copy:
     src: .zshrc
     dest: "{{ user_home }}/.zshrc"
+    mode: 0644

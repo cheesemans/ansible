@@ -13,3 +13,4 @@
   ansible.builtin.copy:
     src: .vimrc
     dest: "{{ user_home }}/.vimrc"
+    mode: 0644
