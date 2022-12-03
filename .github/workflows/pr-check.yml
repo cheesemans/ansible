@@ -1,0 +1,16 @@
+---
+name: Check job
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  ansible-lint:
+    uses: ./.github/workflows/ansible-lint.yml
+  super-linter:
+    uses: ./.github/workflows/super-linter.yml
+    with:
+      validate-all-code-base: true
+
