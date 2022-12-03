@@ -5,11 +5,10 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches-ignore:
-      - main
 
 jobs:
   lint_code_base:
     uses: ./.github/workflows/super-linter.yml
+    with:
+      validate-all-code-base: true
 
