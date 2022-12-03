@@ -1,4 +1,5 @@
-- hosts: all
+- name: Play for setting up development environment
+  hosts: all
   become: false
   vars:
     user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
@@ -7,12 +8,12 @@
 
   pre_tasks:
     #  Adding ultradvorka/ppa seems to not be necessary on jammy, but maybe on focal and before?
-    # - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
-    #   apt_repository:
-    #     repo: ppa:ultradvorka/ppa
-    #     state: present
-    #   become: true
-    #   changed_when: false
+    - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
+      ansible.builtin.apt_repository:
+        repo: ppa:ultradvorka/ppa
+        state: present
+      become: true
+      changed_when: false
     - name: Update apt repositories
       ansible.builtin.apt:
         update_cache: true
