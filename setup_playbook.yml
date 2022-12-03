@@ -9,7 +9,7 @@
   pre_tasks:
     #  Adding ultradvorka/ppa seems to not be necessary on jammy, but maybe on focal and before?
     - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
-      apt_repository:
+      ansible.builtin.apt_repository:
         repo: ppa:ultradvorka/ppa
         state: present
       become: true
