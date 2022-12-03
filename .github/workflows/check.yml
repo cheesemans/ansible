@@ -1,4 +1,5 @@
-name: Check
+---
+name: Check job
 
 on:
   pull_request:
