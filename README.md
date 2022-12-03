@@ -19,8 +19,8 @@ Some steps are too tedious to automate, these have to be run manually 🥲, for 
 ### Remap caps lock to esc
 * Install GNOME Tweaks via Ubuntu Software Store.
 * Start GNOME Tweaks, navigate to "Keyboard & Mouse"
-    * Press "Additional Layout Options"
-        * Alter Caps Lock Behaviour to "Make Caps Lock an additional Esc"
+  * Press "Additional Layout Options"
+    * Alter Caps Lock Behaviour to "Make Caps Lock an additional Esc"
 
 ### Update terminal configuration
 In order for starship to render nicely, the font and color scheme needs to be updated in the
@@ -31,4 +31,4 @@ After launching vim, run:
 
     :PluginInstall
 
-![example workflow](https://github.com/cheesemans/ansible/actions/workflows/main.yml/badge.svg)
+![example workflow](https://github.com/cheesemans/ansible/actions/workflows/release.yml/badge.svg)
