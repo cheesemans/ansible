@@ -1,0 +1,25 @@
+- name: Install Yocto dependencies
+  ansible.builtin.apt:
+    name:
+      - gawk
+      - wget
+      - git-core
+      - diffstat
+      - unzip
+      - texinfo
+      - gcc-multilib
+      - build-essential
+      - chrpath
+      - socat
+      - make
+      - xsltproc
+      - docbook-utils
+      - fop
+      - dblatex
+      - xmlto
+      - autoconf
+      - automake
+      - libtool
+      - libglib2.0-dev
+  become: true
+  tags: work
