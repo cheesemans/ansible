@@ -1,16 +1,19 @@
-- name: Install vim
-  ansible.builtin.apt:
-    name:
-      - vim
-
-- name: Checkout Vundle repo
-  ansible.builtin.git:
-    repo: https://github.com/VundleVim/Vundle.vim.git
-    dest: "{{ user_home }}/.vim/bundle/Vundle.vim"
-    version: b255382d6242d7ea3877bf059d2934125e0c4d95
-
-- name: Copy vimrc to correct path
-  ansible.builtin.copy:
-    src: .vimrc
-    dest: "{{ user_home }}/.vimrc"
-    mode: 0644
+- name: Install and configure vim
+  tags: [personal, work]
+  block:
+    - name: Install vim
+      ansible.builtin.apt:
+        name:
+          - vim
+    
+    - name: Checkout Vundle repo
+      ansible.builtin.git:
+        repo: https://github.com/VundleVim/Vundle.vim.git
+        dest: "{{ user_home }}/.vim/bundle/Vundle.vim"
+        version: b255382d6242d7ea3877bf059d2934125e0c4d95
+    
+    - name: Copy vimrc to correct path
+      ansible.builtin.copy:
+        src: .vimrc
+        dest: "{{ user_home }}/.vimrc"
+        mode: 0644

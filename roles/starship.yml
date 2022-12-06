@@ -1,35 +1,38 @@
-- name: Install snap packages
-  ansible.builtin.snap:
-    name:
-      - starship
-  become: true
+- name: Install starship along with Nerdfont
+  tags: [personal, work]
+  block:
+    - name: Install snap packages
+      ansible.builtin.snap:
+        name:
+          - starship
+      become: true
 
-- name: Copy starship config file
-  ansible.builtin.copy:
-    src: starship.toml
-    dest: "{{ user_home }}/.config/starship.toml"
-    mode: 0664
+    - name: Copy starship config file
+      ansible.builtin.copy:
+        src: starship.toml
+        dest: "{{ user_home }}/.config/starship.toml"
+        mode: 0664
 
-- name: Create folder for FiraCode font if it does not exist
-  ansible.builtin.file:
-    path: /usr/local/share/fonts/FiraCode
-    state: directory
-    mode: 0755
-  become: true
+    - name: Create folder for FiraCode font if it does not exist
+      ansible.builtin.file:
+        path: /usr/local/share/fonts/FiraCode
+        state: directory
+        mode: 0755
+      become: true
 
-- name: Check if FiraCode is already installed
-  ansible.builtin.find:
-    paths: /usr/local/share/fonts/FiraCode
-  register: FontInstalled
+    - name: Check if FiraCode is already installed
+      ansible.builtin.find:
+        paths: /usr/local/share/fonts/FiraCode
+      register: FontInstalled
 
-- name: Download and unpack FiraCode font
-  ansible.builtin.unarchive:
-    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip
-    dest: /usr/local/share/fonts/FiraCode
-    remote_src: true
-  become: true
-  when: not FontInstalled.matched > 0
+    - name: Download and unpack FiraCode font
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/FiraCode.zip
+        dest: /usr/local/share/fonts/FiraCode
+        remote_src: true
+      become: true
+      when: not FontInstalled.matched > 0
 
-- name: Rebuild font information cache files
-  ansible.builtin.command: fc-cache -fv
-  when: not FontInstalled.matched > 0
+    - name: Rebuild font information cache files
+      ansible.builtin.command: fc-cache -fv
+      when: not FontInstalled.matched > 0

@@ -1,29 +1,32 @@
 ---
-- name: Install zsh
-  ansible.builtin.apt:
-    name:
-      - zsh
-  become: true
-
-- name: Change user shell to zsh
-  ansible.builtin.user:
-    name: "{{ user }}"
-    shell: /usr/bin/zsh
-  become: true
-
-- name: Install oh-my-zsh
-  ansible.builtin.shell: |
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  when: oh_my_zsh_path == ""
-
-- name: Download zsh-autosuggestions
-  ansible.builtin.git:
-    repo: https://github.com/zsh-users/zsh-autosuggestions
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-    version: a411ef3e0992d4839f0732ebeb9823024afaaaa8
-
-- name: Copy .zshrc to filesystem
-  ansible.builtin.copy:
-    src: .zshrc
-    dest: "{{ user_home }}/.zshrc"
-    mode: 0644
+- name: Install zsh and oh-my-zsh and make zsh default shell
+  tags: personal
+  block:
+    - name: Install zsh
+      ansible.builtin.apt:
+        name:
+          - zsh
+      become: true
+    
+    - name: Change user shell to zsh
+      ansible.builtin.user:
+        name: "{{ user }}"
+        shell: /usr/bin/zsh
+      become: true
+    
+    - name: Install oh-my-zsh
+      ansible.builtin.shell: |
+        sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      when: oh_my_zsh_path == ""
+    
+    - name: Download zsh-autosuggestions
+      ansible.builtin.git:
+        repo: https://github.com/zsh-users/zsh-autosuggestions
+        dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+        version: a411ef3e0992d4839f0732ebeb9823024afaaaa8
+    
+    - name: Copy .zshrc to filesystem
+      ansible.builtin.copy:
+        src: .zshrc
+        dest: "{{ user_home }}/.zshrc"
+        mode: 0644
