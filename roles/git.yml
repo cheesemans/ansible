@@ -5,21 +5,30 @@
       ansible.builtin.apt:
         name: git
       become: true
-    
+
     - name: Set email in git config
       community.general.git_config:
         name: user.email
         scope: global
         value: "{{ git_email }}"
-    
+
     - name: Set username in git config
       community.general.git_config:
         name: user.name
         scope: global
         value: "Måns Östman"
-    
+
     - name: Set default editor in git config
       community.general.git_config:
         name: core.editor
         scope: global
         value: vim
+
+- name: Set email in local git config
+  community.general.git_config:
+    name: user.email
+    repo: "{{ user_home }}/ansible"
+    scope: local
+    value: mans.ostman@gmail.com
+  tags: work
+
