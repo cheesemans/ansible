@@ -36,4 +36,3 @@
         - roles/teams.yml
         - roles/vscode.yml
         - roles/yocto.yml
-
