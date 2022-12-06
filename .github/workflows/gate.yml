@@ -1,10 +1,8 @@
 ---
-name: Release job
+name: Gate job
 
 on:
-  push:
-    branches:
-      - main
+  merge_group:
 
 jobs:
   ansible-lint:
@@ -22,13 +20,4 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: CHANGELOG.md
-  release-please:
-    needs:
-      - lint-code-base
-      - ansible-lint
-    steps:
-      - uses: google-github-actions/release-please-action@v3
-        with:
-          release-type: simple
-          package-name: cheesemans-ansible-provisioning
 
