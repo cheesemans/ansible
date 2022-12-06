@@ -34,4 +34,5 @@
         - roles/docker.yml
         - roles/rust.yml
         - roles/teams.yml
+        - roles/vscode.yml
 
