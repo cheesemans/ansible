@@ -26,11 +26,10 @@ jobs:
   release-please:
     runs-on: ubuntu-latest
     needs:
-      - lint-code-base
+      - super-linter
       - ansible-lint
     steps:
       - uses: google-github-actions/release-please-action@v3
         with:
           release-type: simple
           package-name: cheesemans-ansible-provisioning
-
