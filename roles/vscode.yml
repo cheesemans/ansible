@@ -1,0 +1,44 @@
+- name: Install vscode
+  become: true
+  tags: [personal, work]
+  block:
+    - name: Add Microsoft Code's official GPG key
+      ansible.builtin.get_url:
+        url: https://packages.microsoft.com/keys/microsoft.asc
+        dest: /etc/apt/keyrings/microsoft.asc
+        mode: "0644"
+        force: true
+
+    - name: Get DEB architecture
+      ansible.builtin.command: dpkg --print-architecture
+      register: deb_architecture
+      changed_when: false
+
+    - name: Set up Microsoft Code repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ deb_architecture.stdout }} signed-by=/etc/apt/keyrings/microsoft.asc] \
+          https://packages.microsoft.com/repos/code stable main"
+        filename: vscode
+        state: present
+        update_cache: true
+
+    - name: Install Code
+      ansible.builtin.apt:
+        name:
+          - code
+
+- name: Configure vscode
+  tags: [personal, work]
+  block:
+    - name: Install vscode extensions
+      ansible.builtin.command: "code --install-extension {{ item }}"
+      loop:
+        - vscodevim.vim
+        - streetsidesoftware.code-spell-checker
+        - shardulm94.trailing-spaces
+        - redhat.vscode-yaml
+        - eamodio.gitlens
+        - emmanuelbeziat.vscode-great-icons
+        - akamud.vscode-theme-onedark
+        - visualstudioexptteam.vscodeintellicode
+        - ms-python.python

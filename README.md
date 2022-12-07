@@ -1,7 +1,7 @@
 # Ansible playbook to provision laptops
 
 ## To do
-* Automate vscode installation and configuration?
+* Version 2: Use roles properly
 
 ## How to run
 

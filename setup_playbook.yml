@@ -5,6 +5,7 @@
     user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
     user: "{{ lookup('ansible.builtin.env', 'USER') }}"
     oh_my_zsh_path: "{{ lookup('ansible.builtin.env', 'ZSH') }}"
+    teams_deb: teams_1.5.00.23861_amd64.deb
 
   pre_tasks:
     #  Adding ultradvorka/ppa seems to not be necessary on jammy, but maybe on focal and before?
@@ -21,23 +22,17 @@
       changed_when: false
 
   tasks:
-    - name: Install some basic packages
-      ansible.builtin.include_tasks: roles/base.yml
-
-    - name: Install and setup git
-      ansible.builtin.include_tasks: roles/git.yml
-
-    - name: Install and setup starship
-      ansible.builtin.include_tasks: roles/starship.yml
-
-    - name: Install and setup zsh
-      ansible.builtin.include_tasks: roles/zsh.yml
-
-    - name: Install and setup vim
-      ansible.builtin.include_tasks: roles/vim.yml
-
-    - name: Install docker
-      ansible.builtin.include_tasks: roles/docker.yml
-
-    - name: Install rust
-      ansible.builtin.include_tasks: roles/rust.yml
+    - name: Run playbook
+      ansible.builtin.include_tasks: "{{ item }}"
+      tags: [personal, work]
+      loop:
+        - roles/base.yml
+        - roles/git.yml
+        - roles/starship.yml
+        - roles/zsh.yml
+        - roles/vim.yml
+        - roles/docker.yml
+        - roles/rust.yml
+        - roles/teams.yml
+        - roles/vscode.yml
+        - roles/yocto.yml

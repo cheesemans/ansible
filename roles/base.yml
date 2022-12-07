@@ -8,3 +8,4 @@
       - python3-pip
       - python-is-python3
   become: true
+  tags: [personal, work]
