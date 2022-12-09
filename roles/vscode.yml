@@ -42,3 +42,9 @@
         - akamud.vscode-theme-onedark
         - visualstudioexptteam.vscodeintellicode
         - ms-python.python
+
+    - name: Copy user setting
+      ansible.builtin.copy:
+        src: settings.json
+        dest: "{{ user_home }}/.config/Code/User/settings.json"
+        mode: 0644
