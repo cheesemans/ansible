@@ -1,0 +1,16 @@
+queue_rules:
+  - name: default
+    conditions:
+      - check-success=ansible-lint / ansible-lint
+      - check-success=Lint Code Base
+
+pull_request_rules:
+  - name: merge using the merge queue
+    conditions:
+      - base=main
+      - label=queue-pr
+      - check-success=ansible-lint / ansible-lint
+      - check-success=Lint Code Base
+    actions:
+      queue:
+        name: default
