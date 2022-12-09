@@ -1,20 +1,23 @@
 shared:
   my_ci: &common_checks
-    - check-success=ansible-lint / ansible-lint
-    - check-success=Lint Code Base
+    - and:
+      - check-success=ansible-lint / ansible-lint
+      - check-success=Lint Code Base
+    - label~=^autorelease
+
 
 queue_rules:
   - name: default
-    conditions: *common_checks
+    conditions:
+      - or: *common_checks
+
 
 pull_request_rules:
   - name: merge using the merge queue
     conditions:
       - base=main
       - label=queue-pr
-      - or:
-        - and: *common_checks
-        - label~=^autorelease
+      - or: *common_checks
     actions:
       queue:
         name: default
