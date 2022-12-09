@@ -12,7 +12,9 @@ pull_request_rules:
     conditions:
       - base=main
       - label=queue-pr
-      - and: *common_checks
+      - or:
+        - and: *common_checks
+        - label~=^autorelease
     actions:
       queue:
         name: default
