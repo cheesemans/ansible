@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/cheesemans/ansible/compare/v1.1.0...v1.1.1) (2022-12-09)
+
+
+### Bug Fixes
+
+* add user to docker group ([aa4831a](https://github.com/cheesemans/ansible/commit/aa4831afc8a7087959b69b082debb1d042643565))
+* Copy user settings for vscode to .config folder ([#20](https://github.com/cheesemans/ansible/issues/20)) ([758c5b4](https://github.com/cheesemans/ansible/commit/758c5b4e30e800afd405a65ccddab16eb14e2653))
+
 ## [1.1.0](https://github.com/cheesemans/ansible/compare/v1.0.0...v1.1.0) (2022-12-08)
 
 
