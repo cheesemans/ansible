@@ -40,4 +40,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Provision runner
-        run: ./setup.sh ${{ matrix.group }}
+        run: ansible-playbook -i inventory.yml -l ${{ matrix.group }} setup_playbook.yml --tags ${{ matrix.group }}
