@@ -28,3 +28,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: CHANGELOG.md
 
+  provision:
+    name: Run ansible playbook on GitHub runner.
+    strategy:
+      matrix:
+        group: [personal, work]
+        os: [ubuntu-22.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    needs: [ansible-lint, super-linter]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Provision runner
+        run: ansible-playbook -i inventory.yml -l ${{ matrix.group }} setup_playbook.yml --tags ${{ matrix.group }}

@@ -5,6 +5,7 @@
       ansible.builtin.apt:
         name:
           - vim
+      become: true
 
     - name: Checkout Vundle repo
       ansible.builtin.git:
