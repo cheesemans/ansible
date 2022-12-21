@@ -8,15 +8,10 @@
     teams_deb: teams_1.5.00.23861_amd64.deb
 
   pre_tasks:
-    #  Adding ultradvorka/ppa seems to not be necessary on jammy, but maybe on focal and before?
-    - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr)
+    - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr on Ubuntu 21.04 and earlier)
       ansible.builtin.apt_repository:
         repo: ppa:ultradvorka/ppa
         state: present
-      become: true
-      changed_when: false
-    - name: Update apt repositories
-      ansible.builtin.apt:
         update_cache: true
       become: true
       changed_when: false
