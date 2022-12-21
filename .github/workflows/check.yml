@@ -27,4 +27,16 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: CHANGELOG.md
+  provision:
+    runs-on: ubuntu-22.04
+    name: Run ansible playbook on GitHub runner.
+    needs: [ansible-lint, super-linter]
+    strategy:
+      matrix:
+        group: [personal, work]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
+      - name: Provision runner
+        run: ./setup.sh ${{ matrix.group }}

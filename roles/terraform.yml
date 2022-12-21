@@ -1,0 +1,37 @@
+---
+- name: Install Terraform
+  become: true
+  tags: [personal, work]
+  block:
+    - name: Install prerequisite apt packages
+      ansible.builtin.apt:
+        name:
+          - gnupg
+          - software-properties-common
+
+    - name: Create keyrings folder
+      ansible.builtin.file:
+        path: /usr/share/keyrings
+        state: directory
+        mode: 0755
+
+    - name: Add Hashicorp's official GPG key
+      ansible.builtin.get_url:
+        url: https://apt.releases.hashicorp.com/gpg
+        dest: /usr/share/keyrings/hashicorp-archive-keyring.asc
+        mode: "0644"
+        force: true
+
+    - name: Set up Hashicorp repository
+      ansible.builtin.apt_repository:
+        repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.asc] \
+          https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+        filename: hashicorp
+        state: present
+        update_cache: true
+
+    - name: Install Terraform
+      ansible.builtin.apt:
+        name:
+          - terraform
+
