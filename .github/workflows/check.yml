@@ -29,12 +29,13 @@ jobs:
           FILTER_REGEX_EXCLUDE: CHANGELOG.md
 
   provision:
-    runs-on: ubuntu-22.04
     name: Run ansible playbook on GitHub runner.
-    needs: [ansible-lint, super-linter]
     strategy:
       matrix:
         group: [personal, work]
+        os: [ubuntu-22.04, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    needs: [ansible-lint, super-linter]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
