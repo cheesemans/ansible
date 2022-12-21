@@ -7,15 +7,6 @@
     oh_my_zsh_path: "{{ lookup('ansible.builtin.env', 'ZSH') }}"
     teams_deb: teams_1.5.00.23861_amd64.deb
 
-  pre_tasks:
-    - name: Add ppa:ultradvorka/ppa apt repository (needed for hstr on Ubuntu 21.04 and earlier)
-      ansible.builtin.apt_repository:
-        repo: ppa:ultradvorka/ppa
-        state: present
-        update_cache: true
-      become: true
-      changed_when: false
-
   tasks:
     - name: Run playbook
       ansible.builtin.include_tasks: "{{ item }}"
