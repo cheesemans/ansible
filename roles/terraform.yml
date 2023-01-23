@@ -30,7 +30,8 @@
         state: present
         update_cache: true
 
-    - name: Install Terraform
+    - name: Install Terraform and Packer
       ansible.builtin.apt:
         name:
           - terraform
+          - packer
