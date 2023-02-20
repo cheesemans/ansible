@@ -20,4 +20,5 @@
           - python3-pip
           - python-is-python3
           - libavcodec-dev
+          - jq
       tags: [personal, work]
