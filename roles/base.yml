@@ -1,12 +1,23 @@
-- name: Install some basic apt packages
-  ansible.builtin.apt:
-    name:
-      - bash-completion
-      - curl
-      - hstr
-      - python3
-      - python3-pip
-      - python-is-python3
-      - jq
+- name: Install Apt packages
   become: true
   tags: [personal, work]
+  block:
+    - name: Add ppa:ultradvorka/ppa apt repository
+      ansible.builtin.apt_repository:
+        repo: ppa:ultradvorka/ppa
+        state: present
+        update_cache: true
+      changed_when: false
+
+    - name: Install some basic apt packages
+      ansible.builtin.apt:
+        name:
+          - bash-completion
+          - curl
+          - hstr
+          - python3
+          - python3-pip
+          - python-is-python3
+          - libavcodec-dev
+          - jq
+      tags: [personal, work]

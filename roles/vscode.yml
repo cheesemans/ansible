@@ -42,6 +42,9 @@
         - akamud.vscode-theme-onedark
         - visualstudioexptteam.vscodeintellicode
         - ms-python.python
+        - hashicorp.terraform
+        - marp-team.marp-vscode
+        - 4ops.packer
 
     - name: Copy user setting
       ansible.builtin.copy:
