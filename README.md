@@ -3,9 +3,9 @@
 ## To do
 * Install Cloud CLIs
 * Create Role for software
-    * Install 1Password
-    * Install Firefox?
-    * Install Spotify
+  * Install 1Password
+  * Install Firefox?
+  * Install Spotify
 * Consider improving readability of existing roles
 
 ## How to run
