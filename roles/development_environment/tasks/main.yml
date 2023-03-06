@@ -1,12 +1,4 @@
 ---
-- name: Add ppa:ultradvorka/ppa apt repository
-  ansible.builtin.apt_repository:
-    repo: ppa:ultradvorka/ppa
-    state: present
-    update_cache: true
-  become: true
-  changed_when: false
-
 - name: Install Minikube
   ansible.builtin.apt:
     deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb

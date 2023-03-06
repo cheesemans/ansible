@@ -31,6 +31,10 @@
   become: true
   loop: "{{ repositories }}"
 
+- name: Debug errors
+  ansible.builtin.debug:
+    msg: ls /etc/apt/keyrings
+
 - name: Set up Repository
   ansible.builtin.apt_repository:
     repo: "{{ item.repo }}"
@@ -39,3 +43,11 @@
     update_cache: true
   become: true
   loop: "{{ repositories }}"
+
+- name: Add ppa:ultradvorka/ppa apt repository
+  ansible.builtin.apt_repository:
+    repo: ppa:ultradvorka/ppa
+    state: present
+    update_cache: true
+  when: ansible_distribution_major_version < '22'
+  become: true
