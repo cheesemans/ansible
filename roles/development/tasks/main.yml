@@ -42,7 +42,7 @@
       - starship
   become: true
 
-### Configure Git ###
+# Configure Git
 - name: Set email in git config
   community.general.git_config:
     name: user.email
@@ -61,14 +61,14 @@
     scope: global
     value: vim
 
-### Configure Docker ###
+# Configure Docker
 - name: Add user to docker group
   ansible.builtin.user:
     name: "{{ user }}"
     groups: docker
     append: true
 
-### Install Rust ###
+# Install Rust
 - name: Check if cargo is installed
   ansible.builtin.command: command -v cargo
   register: cargo_exists
@@ -87,7 +87,7 @@
   when: cargo_exists.failed == false
   ansible.builtin.command: /tmp/sh.rustup.rs -y
 
-### Install Microsoft Teams ###
+# Install Microsoft Teams
 #- name: Check if Teams is installed
 #  command: dpkg-query -W teams
 #  register: teams_check_deb
@@ -106,7 +106,7 @@
 #  become: true
 #  when: teams_check_deb.rc == 1
 
-### Configure Vim ###
+# Configure Vim
 - name: Checkout Vundle repo
   ansible.builtin.git:
     repo: https://github.com/VundleVim/Vundle.vim.git
@@ -119,7 +119,7 @@
     dest: "{{ user_home }}/.vimrc"
     mode: 0644
 
-### Configure VSCode ###
+# Configure VSCode
 - name: Check installed vscode extensions
   ansible.builtin.shell: "code --list-extensions | tr '[:upper:]' '[:lower:]'"
   register: installed_extensions
@@ -135,14 +135,14 @@
     dest: "{{ user_home }}/.config/Code/User/settings.json"
     mode: 0644
 
-### Configure Starship ###
+# Configure Starship
 - name: Copy starship config file
   ansible.builtin.copy:
     src: starship.toml
     dest: "{{ user_home }}/.config/starship.toml"
     mode: 0664
 
-### Random Stuff to put in bashrc file ###
+# Random Stuff to put in bashrc file
 - name: Add init script to bashrc
   ansible.builtin.blockinfile:
     path: "{{ user_home }}/.bashrc"
@@ -164,7 +164,7 @@
       # Load starship
       eval "$(starship init bash)"
 
-### Install FiraCode Font ###
+# Install FiraCode Font
 - name: Create folder for FiraCode font if it does not exist
   ansible.builtin.file:
     path: /usr/local/share/fonts/FiraCode
@@ -189,7 +189,7 @@
   ansible.builtin.command: fc-cache -fv
   when: not FontInstalled.matched > 0
 
-### Configure Zsh and install Oh-My-Zsh ###
+# Configure Zsh and install Oh-My-Zsh
 - name: Change user shell to zsh
   ansible.builtin.user:
     name: "{{ user }}"
