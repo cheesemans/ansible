@@ -1,12 +1,5 @@
 all:
-  children:
-    personal:
-      hosts:
-        personal:
-          ansible_connection: local
-          ansible_python_interpreter: "{{ansible_playbook_python}}"
-    work:
-      hosts:
-        work:
-          ansible_connection: local
-          ansible_python_interpreter: "{{ansible_playbook_python}}"
+  hosts:
+    laptop:
+      ansible_connection: local
+      ansible_python_interpreter: "{{ansible_playbook_python}}"
