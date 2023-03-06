@@ -25,14 +25,11 @@
 - name: Add Repository GPG key
   ansible.builtin.get_url:
     url: "{{ item.url }}"
-    dest: /etc/apt/keyrings/"{{ item.dest }}"
+    dest: "{{ item.dest }}"
     mode: "0644"
     force: true
   become: true
   loop: "{{ repositories }}"
-
-- name: Debug errors
-  ansible.builtin.command: ls /etc/apt/keyrings
 
 - name: Set up Repository
   ansible.builtin.apt_repository:
