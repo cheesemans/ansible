@@ -115,8 +115,8 @@
 
 - name: Install vscode extensions
   ansible.builtin.command: "code --install-extension {{ item }}"
-  register: output
-  changed_when: output.rc == 0
+  register: vscode_output
+  changed_when: vscode_output.rc == 0
   loop: "{{ (vscode_extensions | difference(installed_extensions.stdout_lines)) }}"
 
 - name: Copy user setting
@@ -132,6 +132,8 @@
     curl -sS https://starship.rs/install.sh | sh
   args:
     executable: /bin/bash
+  register: starship_output
+  changed_when: starship_output.rc == 0
 
 - name: Copy Starship config file
   ansible.builtin.copy:
