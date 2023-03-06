@@ -4,6 +4,11 @@
     deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
   become: true
 
+- name: Install 1Password
+  ansible.builtin.apt:
+    deb: https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
+  become: true
+
 - name: Install Apt packages
   ansible.builtin.apt:
     name:
@@ -51,6 +56,7 @@
     name: "{{ user }}"
     groups: docker
     append: true
+  become: true
 
 # Install Rust
 - name: Check if cargo is installed
