@@ -1,0 +1,18 @@
+---
+user_home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+user: "{{ lookup('ansible.builtin.env', 'USER') }}"
+oh_my_zsh_path: "{{ lookup('ansible.builtin.env', 'ZSH') }}"
+teams_deb: teams_1.5.00.23861_amd64.deb
+vscode_extensions:
+  - 4ops.packer
+  - akamud.vscode-theme-onedark
+  - eamodio.gitlens
+  - emmanuelbeziat.vscode-great-icons
+  - hashicorp.terraform
+  - marp-team.marp-vscode
+  - ms-python.python
+  - redhat.vscode-yaml
+  - shardulm94.trailing-spaces
+  - streetsidesoftware.code-spell-checker
+  - visualstudioexptteam.vscodeintellicode
+  - vscodevim.vim

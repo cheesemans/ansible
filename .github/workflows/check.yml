@@ -32,7 +32,6 @@ jobs:
     name: Run ansible playbook on GitHub runner.
     strategy:
       matrix:
-        group: [personal, work]
         os: [ubuntu-22.04, ubuntu-20.04]
     runs-on: ${{ matrix.os }}
     needs: [ansible-lint, super-linter]
@@ -41,4 +40,4 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Provision runner
-        run: ansible-playbook -i inventory.yml -l ${{ matrix.group }} setup_playbook.yml --tags ${{ matrix.group }}
+        run: ansible-playbook -i inventory.yml setup_playbook.yml

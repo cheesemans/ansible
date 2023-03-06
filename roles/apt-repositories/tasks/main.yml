@@ -1,0 +1,41 @@
+---
+- name: Install prerequisite apt packages
+  ansible.builtin.apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+      - software-properties-common
+  become: true
+
+- name: Create keyrings folder
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: 0755
+  become: true
+
+- name: Get DEB architecture
+  ansible.builtin.command: dpkg --print-architecture
+  register: deb_architecture
+  changed_when: false
+
+- name: Add Repository GPG key
+  ansible.builtin.get_url:
+    url: "{{ item.url }}"
+    dest: /etc/apt/keyrings/"{{ item.dest }}"
+    mode: "0644"
+    force: true
+  become: true
+  loop: "{{ repositories }}"
+
+- name: Set up Repository
+  ansible.builtin.apt_repository:
+    repo: "{{ item.repo }}"
+    filename: "{{ item.filename }}"
+    state: present
+    update_cache: true
+  become: true
+  loop: "{{ repositories }}"

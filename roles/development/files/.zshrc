@@ -26,11 +26,6 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
-# Load extra config that I don't want in git
-if [ -f $HOME/dotfiles/extra_files/.zshrc ]; then
-    . $HOME/dotfiles/extra_files/.zshrc
-fi
-
 # Activate package suggestion when command is not found
 source /etc/zsh_command_not_found
 
