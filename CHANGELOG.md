@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.0.0](https://github.com/cheesemans/ansible/compare/v1.1.1...v2.0.0) (2023-03-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* Refactor Ansible roles ([#27](https://github.com/cheesemans/ansible/issues/27))
+
+### Bug Fixes
+
+* Add jq to list of base packages ([#26](https://github.com/cheesemans/ansible/issues/26)) ([bedbc25](https://github.com/cheesemans/ansible/commit/bedbc25280991623cf4861493be656dafcdb18ec))
+* Add kubernetes ([#25](https://github.com/cheesemans/ansible/issues/25)) ([f1c04ac](https://github.com/cheesemans/ansible/commit/f1c04acd9fbf40ba7dadd6ea61e8e01806859a75))
+* Install Packer ([#24](https://github.com/cheesemans/ansible/issues/24)) ([333d950](https://github.com/cheesemans/ansible/commit/333d9509654042fe4b028e23df68e0d95ecde637))
+* Install terraform ([#22](https://github.com/cheesemans/ansible/issues/22)) ([32c265d](https://github.com/cheesemans/ansible/commit/32c265d10ba2bca43c9557bcdd0be95465c01260))
+
+
+### Code Refactoring
+
+* Refactor Ansible roles ([#27](https://github.com/cheesemans/ansible/issues/27)) ([b083a48](https://github.com/cheesemans/ansible/commit/b083a486d9e4997aa23b67f5af8eeb17a9fb3b43))
+
 ## [1.1.1](https://github.com/cheesemans/ansible/compare/v1.1.0...v1.1.1) (2022-12-09)
 
 
