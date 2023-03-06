@@ -13,7 +13,7 @@ repositories:
 
   - url: https://apt.releases.hashicorp.com/gpg
     dest: /etc/apt/keyrings/hashicorp-archive-keyring.asc
-    repo: "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.asc] \
+    repo: "deb [signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.asc] \
           https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     filename: hashicorp
 
