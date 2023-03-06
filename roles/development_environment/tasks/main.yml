@@ -26,12 +26,6 @@
       - vim
   become: true
 
-- name: Install snap packages
-  ansible.builtin.snap:
-    name:
-      - starship
-  become: true
-
 # Configure Git
 - name: Set email in git config
   community.general.git_config:
@@ -132,7 +126,14 @@
     mode: 0644
 
 # Configure Starship
-- name: Copy starship config file
+- name: Install Starship
+  ansible.builtin.shell: |
+    set -o pipefail
+    curl -sS https://starship.rs/install.sh | sh
+  args:
+    executable: /bin/bash
+
+- name: Copy Starship config file
   ansible.builtin.copy:
     src: starship.toml
     dest: "{{ user_home }}/.config/starship.toml"
