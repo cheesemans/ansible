@@ -76,7 +76,7 @@
   changed_when: false
 
 - name: Download Installer
-  when: cargo_exists.failed == false
+  when: not cargo_exists.failed
   ansible.builtin.get_url:
     url: https://sh.rustup.rs
     dest: /tmp/sh.rustup.rs
@@ -84,27 +84,27 @@
     force: 'yes'
 
 - name: Install rust/cargo
-  when: cargo_exists.failed == false
+  when: not cargo_exists.failed
   ansible.builtin.command: /tmp/sh.rustup.rs -y
 
 # Install Microsoft Teams
-#- name: Check if Teams is installed
-#  command: dpkg-query -W teams
-#  register: teams_check_deb
-#  failed_when: teams_check_deb.rc > 1
-#  changed_when: teams_check_deb.rc == 1
+# - name: Check if Teams is installed
+#   command: dpkg-query -W teams
+#   register: teams_check_deb
+#   failed_when: teams_check_deb.rc > 1
+#   changed_when: teams_check_deb.rc == 1
 #
-#- name: Download deb file
-#  ansible.builtin.get_url:
-#    url: "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/{{ teams_deb }}"
-#    dest: "/tmp/{{ teams_deb }}"
-#    mode: "0644"
-#  when: teams_check_deb.rc == 1
+# - name: Download deb file
+#   ansible.builtin.get_url:
+#     url: "https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/{{ teams_deb }}"
+#     dest: "/tmp/{{ teams_deb }}"
+#     mode: "0644"
+#   when: teams_check_deb.rc == 1
 #
-#- name: Install Teams
-#  apt: deb="/tmp/{{ teams_deb }}"
-#  become: true
-#  when: teams_check_deb.rc == 1
+# - name: Install Teams
+#   apt: deb="/tmp/{{ teams_deb }}"
+#   become: true
+#   when: teams_check_deb.rc == 1
 
 # Configure Vim
 - name: Checkout Vundle repo
@@ -121,7 +121,9 @@
 
 # Configure VSCode
 - name: Check installed vscode extensions
-  ansible.builtin.shell: "code --list-extensions | tr '[:upper:]' '[:lower:]'"
+  ansible.builtin.shell: |
+    set -o pipefail
+    code --list-extensions | tr '[:upper:]' '[:lower:]'
   register: installed_extensions
   changed_when: false
 
@@ -175,7 +177,7 @@
 - name: Check if FiraCode is already installed
   ansible.builtin.find:
     paths: /usr/local/share/fonts/FiraCode
-  register: FontInstalled
+  register: font_installed
 
 - name: Download and unpack FiraCode font
   ansible.builtin.unarchive:
@@ -183,11 +185,11 @@
     dest: /usr/local/share/fonts/FiraCode
     remote_src: true
   become: true
-  when: not FontInstalled.matched > 0
+  when: not font_installed.matched > 0
 
 - name: Rebuild font information cache files
   ansible.builtin.command: fc-cache -fv
-  when: not FontInstalled.matched > 0
+  when: not font_installed.matched > 0
 
 # Configure Zsh and install Oh-My-Zsh
 - name: Change user shell to zsh

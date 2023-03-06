@@ -1,5 +1,8 @@
 ---
 galaxy_info:
+  author: Måns Östman
+  description: This role sets up my personal development environment
+  license: MIT
   min_ansible_version: "2.8"
   platforms:
     - name: Ubuntu
