@@ -32,8 +32,7 @@
   loop: "{{ repositories }}"
 
 - name: Debug errors
-  ansible.builtin.debug:
-    msg: ls /etc/apt/keyrings
+  ansible.builtin.command: ls /etc/apt/keyrings
 
 - name: Set up Repository
   ansible.builtin.apt_repository:
