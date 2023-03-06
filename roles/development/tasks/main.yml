@@ -129,6 +129,8 @@
 
 - name: Install vscode extensions
   ansible.builtin.command: "code --install-extension {{ item }}"
+  register: output
+  changed_when: output.rc != 0
   loop: "{{ (vscode_extensions | difference(installed_extensions.stdout_lines)) }}"
 
 - name: Copy user setting
