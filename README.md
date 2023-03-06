@@ -1,17 +1,17 @@
 # Ansible playbook to provision laptops
 
 ## To do
-* Version 2: Use roles properly
+* Install Cloud CLIs
+* Create Role for software
+    * Install 1Password
+    * Install Firefox?
+    * Install Spotify
+* Consider improving readability of existing roles
 
 ## How to run
 
-### Set up personal computer
-    ./setup.sh personal
-
-### Set up work computer
-Set work email in group_vars/work.yml.
-
-    ./setup.sh work
+### Setup
+    ./setup.sh
 
 ## Manual steps
 Some steps are too tedious to automate, these have to be run manually 🥲, for now!
