@@ -1,0 +1,40 @@
+---
+- name: Install Minikube
+  ansible.builtin.apt:
+    deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+  become: true
+
+- name: Install 1Password
+  ansible.builtin.apt:
+    deb: https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb
+  become: true
+
+- name: Install 1Password CLI
+  ansible.builtin.apt:
+    deb: https://downloads.1password.com/linux/debian/amd64/stable/1password-cli-amd64-latest.deb
+  become: true
+
+- name: Install Apt packages
+  ansible.builtin.apt:
+    name:
+      - bash-completion
+      - code
+      - containerd.io
+      - docker-ce
+      - docker-ce-cli
+      - docker-compose-plugin
+      - gh
+      - git
+      - gnome-tweaks
+      - hstr
+      - jq
+      - kubectl
+      - libavcodec-dev
+      - packer
+      - python3
+      - python3-pip
+      - python-is-python3
+      - spotify-client
+      - terraform
+      - vim
+  become: true
