@@ -47,6 +47,6 @@ if $first_time_setup ; then
 
     op signin
     op plugin init gh
-    echo "source $HOME/.config/op/plugins.sh" >> ~/.bashrc && source ~/.bashrc
-    echo "Run: gh ssh-key add "$HOME/.ssh/id_ssh_ed25519.pub" -t personal-laptop"
+    echo "source $HOME/.config/op/plugins.sh" >> "$HOME/.bashrc" && source "$HOME/.bashrc"
+    echo 'Run: gh ssh-key add "$HOME/.ssh/id_ssh_ed25519.pub" -t personal-laptop'
 fi

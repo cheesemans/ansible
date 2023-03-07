@@ -42,5 +42,5 @@
 - name: Upgrade and Autoremove Apt packages
   ansible.builtin.apt:
     autoremove: true
-    upgrade: yes
+    upgrade: true
   become: true

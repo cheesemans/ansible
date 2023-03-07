@@ -1,6 +1,6 @@
 ---
 - name: Check if Teams is installed
-  command: dpkg-query -W teams
+  ansible.builtin.command: dpkg-query -W teams
   register: teams_check_deb
   failed_when: teams_check_deb.rc > 1
   changed_when: teams_check_deb.rc == 1
@@ -13,6 +13,7 @@
   when: teams_check_deb.rc == 1
 
 - name: Install Teams
-  apt: deb="/tmp/{{ teams_deb }}"
+  ansible.builtin.apt:
+    deb: "/tmp/{{ teams_deb }}"
   become: true
   when: teams_check_deb.rc == 1
