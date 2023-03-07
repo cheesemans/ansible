@@ -2,9 +2,6 @@
 
 ## To do
 * Install Cloud CLIs
-* Create Role for software
-  * Install Spotify
-* Consider improving readability of existing roles
 
 ## How to run
 
