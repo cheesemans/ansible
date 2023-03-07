@@ -39,8 +39,8 @@
       - vim
   become: true
 
-- name: Upgrade and Autoremove Apt packages
-  ansible.builtin.apt:
-    autoremove: true
-    upgrade: true
-  become: true
+#- name: Upgrade and Autoremove Apt packages
+#  ansible.builtin.apt:
+#    autoremove: true
+#    upgrade: true
+#  become: true
