@@ -21,7 +21,7 @@ while getopts 'fh' flag; do
   esac
 done
 
- Install ansible and necessary collections
+# Install ansible and necessary collections
 if $first_time_setup ; then
     sudo apt-get install ansible
     ansible-galaxy collection install -r requirements.yml
@@ -38,7 +38,8 @@ fi
 # Add SSH key to Github
 if $first_time_setup ; then
     while true; do
-        read -p "Log into 1Password and configure it for use with 1Password CLI (https://developer.1password.com/docs/cli/get-started/#sign-in), type 'Y/y' when done!" choice
+        echo "Log into 1Password and configure it for use with 1Password CLI (https://developer.1password.com/docs/cli/get-started/#sign-in), type 'Y/y' when done!"
+        read -r choice
         case $choice in
             [Yy]* ) echo "Continuing..."; break;;
             * ) echo "Follow the instructions!";;
