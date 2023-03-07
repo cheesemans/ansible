@@ -1,0 +1,32 @@
+---
+- name: Install packages
+  ansible.builtin.import_tasks: packages.yml
+
+- name: Install Rust
+  ansible.builtin.import_tasks: rust.yml
+
+- name: Install and configure starship
+  ansible.builtin.import_tasks: starship.yml
+
+- name: Install Nerd Font
+  ansible.builtin.import_tasks: fonts.yml
+
+- name: Configuration for Git/GitHub
+  ansible.builtin.import_tasks: git.yml
+
+- name: Configure vim
+  ansible.builtin.import_tasks: vim.yml
+
+- name: Configure vscode
+  ansible.builtin.import_tasks: vscode.yml
+
+- name: Add configuration to bashrc
+  ansible.builtin.import_tasks: bashrc.yml
+
+# Configure Docker
+- name: Add user to docker group
+  ansible.builtin.user:
+    name: "{{ user }}"
+    groups: docker
+    append: true
+  become: true

@@ -1,0 +1,23 @@
+---
+- name: Generate SSH key for GitHub
+  community.crypto.openssh_keypair:
+    path: "{{ user_home }}/.ssh/id_ssh_ed25519"
+    type: ed25519
+
+- name: Set email in git config
+  community.general.git_config:
+    name: user.email
+    scope: global
+    value: "mans.ostman@gmail.com"
+
+- name: Set username in git config
+  community.general.git_config:
+    name: user.name
+    scope: global
+    value: "Måns Östman"
+
+- name: Set default editor in git config
+  community.general.git_config:
+    name: core.editor
+    scope: global
+    value: vim

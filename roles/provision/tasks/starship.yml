@@ -1,0 +1,14 @@
+---
+- name: Install Starship
+  ansible.builtin.shell: |
+    set -o pipefail
+    curl -sS https://starship.rs/install.sh | sh -s -- --yes
+  args:
+    executable: /bin/bash
+  changed_when: false
+
+- name: Copy Starship config file
+  ansible.builtin.copy:
+    src: starship.toml
+    dest: "{{ user_home }}/.config/starship.toml"
+    mode: 0664
