@@ -30,6 +30,7 @@
       - jq
       - kubectl
       - libavcodec-dev
+      - npm
       - packer
       - python3
       - python3-pip
