@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/cheesemans/ansible/compare/v2.0.0...v2.0.1) (2023-03-08)
+
+
+### Bug Fixes
+
+* Install npm ([#30](https://github.com/cheesemans/ansible/issues/30)) ([d6ee931](https://github.com/cheesemans/ansible/commit/d6ee9310b9621381e8fa3348003504f0de575187))
+
 ## [2.0.0](https://github.com/cheesemans/ansible/compare/v1.1.1...v2.0.0) (2023-03-06)
 
 
